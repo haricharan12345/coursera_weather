@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'; // Importing CSS file for styling
 
 function App() {
   const [selectedCity, setSelectedCity] = useState('');
@@ -65,7 +66,6 @@ function App() {
 
   const handleCityChange = (event) => {
     setSelectedCity(event.target.value);
-    
   };
 
   useEffect(() => {
@@ -88,9 +88,9 @@ function App() {
   }, [selectedCity, locationData]);
 
   return (
-    <div>
+    <div className="app-container">
       <h1>Weather Data</h1>
-      <div>
+      <div className="select-container"> 
         <label htmlFor="citySelect">Select City:</label>
         <select id="citySelect" onChange={handleCityChange} value={selectedCity}>
           <option value="">Select City</option>
@@ -100,7 +100,7 @@ function App() {
         </select>
       </div>
       {weatherData && (
-        <div>
+        <div className="weather-data-container"> 
           <h2>Weather Data:</h2>
           <pre>{JSON.stringify(weatherData, null, 2)}</pre>
         </div>
